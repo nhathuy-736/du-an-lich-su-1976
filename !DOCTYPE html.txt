@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Thống Nhất - Kỳ Họp Quốc Hội Đầu Tiên 1976</title>
+    <style>
+        :root {
+            --red: #8B1E1E;
+            --gold: #D4A340;
+            --bg: #F6F4EB;
+            --text: #2B2B2B;
+        }
+        
+        * { box-sizing: border-box; }
+
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            overflow-x: hidden; 
+        }
+
+        /* Hero Section */
+        header { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: var(--red); 
+            color: var(--bg); 
+            text-align: center; 
+            padding: 0 20px;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(139, 30, 30, 0.9), rgba(139, 30, 30, 0.9)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Quoc_ky_Viet_Nam.svg/1024px-Quoc_ky_Viet_Nam.svg.png') center/cover;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .hero-content { z-index: 1; }
+
+        h1 { 
+            font-size: 4rem; 
+            color: var(--gold); 
+            margin-bottom: 20px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+        }
+
+        .subtitle { 
+            font-size: 1.5rem; 
+            max-width: 800px; 
+            line-height: 1.6; 
+            margin-bottom: 40px;
+        }
+
+        .scroll-indicator { 
+            font-size: 1.2rem; 
+            color: var(--gold); 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite; 
+        }
+
+        @keyframes bounce { 
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+            40% {transform: translateY(-20px);} 
+            60% {transform: translateY(-10px);} 
+        }
+        
+        /* Scrollytelling Timeline */
+        .timeline-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 100px 20px; 
+            position: relative; 
+        }
+
+        .timeline-container::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; bottom: 0; left: 50%; width: 4px; 
+            background: var(--gold); 
+            transform: translateX(-50%); 
+        }
+        
+        .step { 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 15vh; position: relative; width: 100%; 
+            opacity: 0; transform: translateY(100px); 
+            transition: all 1s ease-out; 
+        }
+
+        .step.visible { opacity: 1; transform: translateY(0); }
+        .step:nth-child(odd) { flex-direction: row-reverse; }
+        
+        .step-content { 
+            width: 45%; background: #fff; padding: 40px; border-radius: 12px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); position: relative; 
+            border-top: 6px solid var(--red); 
+        }
+
+        .step-content::before { 
+            content: ''; position: absolute; top: 30px; width: 24px; height: 24px; 
+            background: var(--bg); border: 4px solid var(--red);
+            border-radius: 50%; z-index: 1;
+        }
+
+        .step:nth-child(odd) .step-content::before { left: -calc(10% + 22px); }
+        .step:nth-child(even) .step-content::before { right: -calc(10% + 22px); }
+        
+        .date { 
+            display: inline-block; background-color: var(--gold); color: #fff;
+            padding: 5px 15px; border-radius: 20px; font-size: 1rem; 
+            font-weight: bold; margin-bottom: 15px; 
+        }
+
+        .title { font-size: 2rem; color: var(--red); margin-bottom: 15px; }
+        .desc { font-size: 1.15rem; line-height: 1.8; color: #444; }
+        .highlight { color: var(--red); font-weight: bold; }
+
+        .decisions-list { list-style: none; padding: 0; margin-top: 20px; }
+        .decisions-list li { padding: 10px 0; border-bottom: 1px dashed #ccc; font-size: 1.1rem; }
+        .decisions-list li::before { content: '★'; color: var(--gold); margin-right: 10px; }
+
+        footer { text-align: center; padding: 50px 20px; background-color: var(--red); color: var(--bg); }
+
+        @media (max-width: 768px) {
+            .timeline-container::before { left: 30px; }
+            .step { flex-direction: column !important; align-items: flex-end; }
+            .step-content { width: calc(100% - 60px); }
+            .step:nth-child(odd) .step-content::before, .step:nth-child(even) .step-content::before { left: -46px; right: auto; }
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-content">
+            <h1>Kỳ Họp Quốc Hội Đầu Tiên</h1>
+            <p class="subtitle">Nước Việt Nam Thống Nhất (24/6 - 3/7/1976)<br>Bước ngoặt hoàn thành thống nhất đất nước về mặt Nhà nước.</p>
+            <div class="scroll-indicator">Cuộn để khám phá <br> ↓</div>
+        </div>
+    </header>
+
+    <div class="timeline-container">
+        
+        <div class="step">
+            <div class="step-content">
+                <div class="date">Tháng 4 - Tháng 5/1976</div>
+                <h2 class="title">Tiền đề trực tiếp</h2>
+                <p class="desc">Cuộc Tổng tuyển cử bầu Quốc hội chung được tổ chức thành công rực rỡ vào ngày <span class="highlight">25/4/1976</span>. Cả nước nô nức đi bỏ phiếu, tạo ra cơ sở pháp lý và thực tiễn vững chắc để triệu tập kỳ họp Quốc hội đầu tiên của nước Việt Nam thống nhất.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-content">
+                <div class="date">24/06/1976</div>
+                <h2 class="title">Khai mạc kỳ họp lịch sử</h2>
+                <p class="desc">Kỳ họp thứ nhất, Quốc hội khóa VI chính thức khai mạc trọng thể tại <span class="highlight">Hội trường Ba Đình (Hà Nội)</span>. Lần đầu tiên sau hơn 20 năm chia cắt, đại biểu từ cả hai miền Nam - Bắc tề tựu chung dưới một mái nhà lập pháp.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-content">
+                <div class="date">02/07/1976</div>
+                <h2 class="title">Những quyết định định hình Quốc gia</h2>
+                <p class="desc">Quốc hội biểu quyết thông qua hàng loạt nghị quyết lịch sử, chính thức ấn định các biểu tượng của một quốc gia độc lập, thống nhất:</p>
+                <ul class="decisions-list">
+                    <li><strong>Quốc hiệu:</strong> Cộng hòa Xã hội Chủ nghĩa Việt Nam</li>
+                    <li><strong>Quốc kỳ:</strong> Cờ đỏ sao vàng</li>
+                    <li><strong>Quốc huy:</strong> Mang dòng chữ "Cộng hòa Xã hội Chủ nghĩa Việt Nam"</li>
+                    <li><strong>Quốc ca:</strong> Bài Tiến quân ca</li>
+                    <li><strong>Thủ đô:</strong> Hà Nội</li>
+                    <li>Đổi tên Sài Gòn - Gia Định thành <strong>Thành phố Hồ Chí Minh</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-content">
+                <div class="date">Đầu tháng 7/1976</div>
+                <h2 class="title">Bầu cử bộ máy Nhà nước chung</h2>
+                <p class="desc">Quốc hội tiến hành bầu các chức danh lãnh đạo cao nhất của bộ máy Nhà nước thống nhất bao gồm: Chủ tịch nước, các Phó Chủ tịch, Ủy ban Thường vụ Quốc hội và Hội đồng Chính phủ.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-content">
+                <div class="date">03/07/1976</div>
+                <h2 class="title">Bế mạc & Hoàn thành sứ mệnh</h2>
+                <p class="desc">Kỳ họp Quốc hội bế mạc, đánh dấu bước hoàn thành trọn vẹn quá trình <span class="highlight">thống nhất đất nước về mặt Nhà nước</span>. Cách mạng Việt Nam chính thức bước sang kỷ nguyên độc lập, thống nhất và đi lên CNXH.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Sản phẩm dự án: Hành trình thống nhất đất nước về mặt Nhà nước (1975-1976)</p>
+        <p><small>Thiết kế dưới định dạng Báo chí dữ liệu / Scrollytelling</small></p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const steps = document.querySelectorAll('.step');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+            steps.forEach(step => observer.observe(step));
+        });
+    </script>
+</body>
+</html>
